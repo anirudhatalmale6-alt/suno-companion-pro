@@ -249,6 +249,10 @@ section{padding:100px 0;position:relative}
 .form-status{margin-top:16px;padding:12px 16px;border-radius:6px;font-size:13px;font-weight:600;display:none}
 .form-status.success{display:block;background:rgba(0,230,118,.1);color:#00e676;border:1px solid rgba(0,230,118,.2)}
 .form-status.error{display:block;background:rgba(255,59,92,.1);color:#ff3b5c;border:1px solid rgba(255,59,92,.2)}
+.form-get-ext{display:block;text-align:center;margin-top:16px;padding:12px 28px;border-radius:8px;
+  border:1px solid var(--teal);color:var(--teal);text-decoration:none;font-size:13px;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;transition:all .3s}
+.form-get-ext:hover{background:var(--teal-dim);box-shadow:0 4px 20px rgba(0,240,255,.2);transform:translateY(-2px)}
 
 /* ═══ FOOTER ═══ */
 footer{padding:48px 0;border-top:1px solid var(--border)}
@@ -259,7 +263,10 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 .footer-links{display:flex;gap:24px}
 .footer-links a{color:var(--text3);text-decoration:none;font-size:12px;transition:color .2s}
 .footer-links a:hover{color:var(--pink)}
-.footer-copy{color:var(--text3);font-size:11px;width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-refund{color:var(--text3);font-size:11px;width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-refund a{color:var(--pink);text-decoration:none;transition:color .2s}
+.footer-refund a:hover{color:#fff}
+.footer-copy{color:var(--text3);font-size:11px;width:100%;text-align:center;margin-top:8px}
 
 /* ═══ SCROLL REVEAL ═══ */
 .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.19,1,.22,1)}
@@ -551,6 +558,7 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
           <button type="submit" class="form-submit" data-i18n="form_send">Send Message</button>
           <div class="form-status" id="formStatus"></div>
         </form>
+        <a href="#download" class="form-get-ext" data-i18n="nav_cta">Get Extension</a>
       </div>
     </div>
   </div>
@@ -569,6 +577,7 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
         <a href="terms.html" data-i18n="footer_terms">Terms of Service</a>
         <a href="#contact" data-i18n="nav_contact">Contact</a>
       </div>
+      <p class="footer-refund" data-i18n="footer_refund">All digital purchases are final and non-refundable. See <a href="terms.html">Terms of Service</a> for details.</p>
       <p class="footer-copy">&copy; 2026 Suno Companion PRO by mediaXtreme LLC. Not affiliated with Suno. All rights reserved.</p>
     </div>
   </div>
@@ -605,7 +614,7 @@ contact_support:"Technical Support",contact_support_desc:"Having issues with the
 form_name:"Name",form_email:"Email",form_subject:"Subject",form_message:"Message",form_send:"Send Message",
 form_select:"Select a topic...",form_opt_support:"Technical Support",form_opt_feature:"Feature Request",form_opt_billing:"Billing Question",form_opt_other:"Other",
 form_success:"Message sent! We'll get back to you soon.",form_error:"Something went wrong. Please try again.",
-footer_privacy:"Privacy Policy",footer_terms:"Terms of Service"},
+footer_privacy:"Privacy Policy",footer_terms:"Terms of Service",footer_refund:"All digital purchases are final and non-refundable. See <a href='terms.html'>Terms of Service</a> for details."},
 es:{nav_features:"Funciones",nav_how:"Cómo Funciona",nav_pricing:"Precios",nav_download:"Descargar",nav_contact:"Contacto",nav_cta:"Obtener",
 hero_title:'Deja de pelear con la UI.<br><span class="gradient" data-i18n="hero_title2">Empieza a producir.</span>',hero_title2:"Empieza a producir.",
 hero_sub:"La extensión esencial para usuarios avanzados de Suno AI. Cuatro brechas críticas — resueltas en un clic.",
@@ -634,7 +643,7 @@ contact_support:"Soporte Técnico",contact_support_desc:"¿Problemas con la exte
 form_name:"Nombre",form_email:"Correo",form_subject:"Asunto",form_message:"Mensaje",form_send:"Enviar Mensaje",
 form_select:"Selecciona un tema...",form_opt_support:"Soporte Técnico",form_opt_feature:"Solicitar Función",form_opt_billing:"Pregunta de Pago",form_opt_other:"Otro",
 form_success:"¡Mensaje enviado! Te responderemos pronto.",form_error:"Algo salió mal. Inténtalo de nuevo.",
-footer_privacy:"Política de Privacidad",footer_terms:"Términos de Servicio"},
+footer_privacy:"Política de Privacidad",footer_terms:"Términos de Servicio",footer_refund:"Todas las compras digitales son finales y no reembolsables. Consulte los <a href='terms.html'>Términos de Servicio</a>."},
 fr:{nav_features:"Fonctions",nav_how:"Comment ça marche",nav_pricing:"Tarifs",nav_download:"Télécharger",nav_contact:"Contact",nav_cta:"Obtenir",
 hero_title:'Arrêtez de combattre l\'UI.<br><span class="gradient" data-i18n="hero_title2">Commencez à produire.</span>',hero_title2:"Commencez à produire.",
 hero_sub:"L'extension essentielle pour les utilisateurs avancés de Suno AI. Quatre lacunes critiques — résolues en un clic.",
@@ -663,7 +672,7 @@ contact_support:"Support Technique",contact_support_desc:"Des problèmes? Nous v
 form_name:"Nom",form_email:"Email",form_subject:"Sujet",form_message:"Message",form_send:"Envoyer",
 form_select:"Sélectionnez...",form_opt_support:"Support Technique",form_opt_feature:"Demande de Fonction",form_opt_billing:"Question Facturation",form_opt_other:"Autre",
 form_success:"Message envoyé! Nous vous répondrons bientôt.",form_error:"Erreur. Veuillez réessayer.",
-footer_privacy:"Politique de Confidentialité",footer_terms:"Conditions d'Utilisation"},
+footer_privacy:"Politique de Confidentialité",footer_terms:"Conditions d'Utilisation",footer_refund:"Tous les achats numériques sont définitifs et non remboursables. Voir les <a href='terms.html'>Conditions d'Utilisation</a>."},
 de:{nav_features:"Funktionen",nav_how:"So funktioniert's",nav_pricing:"Preise",nav_download:"Download",nav_contact:"Kontakt",nav_cta:"Holen",
 hero_title:'Hör auf, gegen die UI zu kämpfen.<br><span class="gradient" data-i18n="hero_title2">Fang an zu produzieren.</span>',hero_title2:"Fang an zu produzieren.",
 hero_sub:"Die unverzichtbare Browser-Erweiterung für Suno AI Power-User. Vier kritische Lücken — mit einem Klick gelöst.",
@@ -692,7 +701,7 @@ contact_support:"Technischer Support",contact_support_desc:"Probleme? Wir helfen
 form_name:"Name",form_email:"E-Mail",form_subject:"Betreff",form_message:"Nachricht",form_send:"Nachricht senden",
 form_select:"Thema wählen...",form_opt_support:"Technischer Support",form_opt_feature:"Feature-Wunsch",form_opt_billing:"Rechnungsfrage",form_opt_other:"Sonstiges",
 form_success:"Nachricht gesendet! Wir melden uns bald.",form_error:"Fehler. Bitte erneut versuchen.",
-footer_privacy:"Datenschutz",footer_terms:"Nutzungsbedingungen"},
+footer_privacy:"Datenschutz",footer_terms:"Nutzungsbedingungen",footer_refund:"Alle digitalen Käufe sind endgültig und nicht erstattungsfähig. Siehe <a href='terms.html'>Nutzungsbedingungen</a>."},
 pt:{nav_features:"Recursos",nav_how:"Como Funciona",nav_pricing:"Preços",nav_download:"Download",nav_contact:"Contato",nav_cta:"Obter",
 hero_title:'Pare de lutar com a UI.<br><span class="gradient" data-i18n="hero_title2">Comece a produzir.</span>',hero_title2:"Comece a produzir.",
 hero_sub:"A extensão essencial para usuários avançados do Suno AI. Quatro lacunas críticas — resolvidas em um clique.",
@@ -721,7 +730,7 @@ contact_support:"Suporte Técnico",contact_support_desc:"Problemas? Nós ajudamo
 form_name:"Nome",form_email:"Email",form_subject:"Assunto",form_message:"Mensagem",form_send:"Enviar Mensagem",
 form_select:"Selecione um tópico...",form_opt_support:"Suporte Técnico",form_opt_feature:"Solicitar Recurso",form_opt_billing:"Pergunta de Pagamento",form_opt_other:"Outro",
 form_success:"Mensagem enviada! Responderemos em breve.",form_error:"Algo deu errado. Tente novamente.",
-footer_privacy:"Política de Privacidade",footer_terms:"Termos de Serviço"},
+footer_privacy:"Política de Privacidade",footer_terms:"Termos de Serviço",footer_refund:"Todas as compras digitais são finais e não reembolsáveis. Veja os <a href='terms.html'>Termos de Serviço</a>."},
 it:{nav_features:"Funzioni",nav_how:"Come Funziona",nav_pricing:"Prezzi",nav_download:"Scarica",nav_contact:"Contatti",nav_cta:"Ottieni",
 hero_title:'Smetti di combattere la UI.<br><span class="gradient" data-i18n="hero_title2">Inizia a produrre.</span>',hero_title2:"Inizia a produrre.",
 hero_sub:"L'estensione essenziale per gli utenti avanzati di Suno AI. Quattro lacune critiche — risolte in un clic.",
@@ -749,7 +758,7 @@ contact_support:"Supporto Tecnico",contact_support_desc:"Problemi? Ti aiutiamo n
 form_name:"Nome",form_email:"Email",form_subject:"Oggetto",form_message:"Messaggio",form_send:"Invia Messaggio",
 form_select:"Seleziona un argomento...",form_opt_support:"Supporto Tecnico",form_opt_feature:"Richiesta Funzione",form_opt_billing:"Domanda Fatturazione",form_opt_other:"Altro",
 form_success:"Messaggio inviato! Ti risponderemo presto.",form_error:"Qualcosa è andato storto. Riprova.",
-footer_privacy:"Privacy Policy",footer_terms:"Termini di Servizio"},
+footer_privacy:"Privacy Policy",footer_terms:"Termini di Servizio",footer_refund:"Tutti gli acquisti digitali sono definitivi e non rimborsabili. Vedi <a href='terms.html'>Termini di Servizio</a>."},
 zh:{nav_features:"功能",nav_how:"如何使用",nav_pricing:"价格",nav_download:"下载",nav_contact:"联系我们",nav_cta:"获取",
 hero_title:'停止与 UI 斗争。<br><span class="gradient" data-i18n="hero_title2">开始创作。</span>',hero_title2:"开始创作。",
 hero_sub:"Suno AI 高级用户的必备浏览器扩展。四个关键工作流缺口——一键解决。",
@@ -778,7 +787,7 @@ contact_support:"技术支持",contact_support_desc:"有问题？我们帮你。
 form_name:"姓名",form_email:"邮箱",form_subject:"主题",form_message:"消息",form_send:"发送消息",
 form_select:"选择主题...",form_opt_support:"技术支持",form_opt_feature:"功能请求",form_opt_billing:"账单问题",form_opt_other:"其他",
 form_success:"消息已发送！我们会尽快回复。",form_error:"出错了。请重试。",
-footer_privacy:"隐私政策",footer_terms:"服务条款"},
+footer_privacy:"隐私政策",footer_terms:"服务条款",footer_refund:"所有数字购买均为最终购买且不可退款。详见<a href='terms.html'>服务条款</a>。"},
 ar:{nav_features:"الميزات",nav_how:"كيف يعمل",nav_pricing:"الأسعار",nav_download:"تحميل",nav_contact:"اتصل بنا",nav_cta:"احصل",
 hero_title:'توقف عن محاربة الواجهة.<br><span class="gradient" data-i18n="hero_title2">ابدأ بالإنتاج.</span>',hero_title2:"ابدأ بالإنتاج.",
 hero_sub:"إضافة المتصفح الأساسية لمستخدمي Suno AI المتقدمين. أربع ثغرات حرجة — تم حلها بنقرة واحدة.",
@@ -807,7 +816,7 @@ contact_support:"الدعم التقني",contact_support_desc:"مشاكل؟ ن�
 form_name:"الاسم",form_email:"البريد",form_subject:"الموضوع",form_message:"الرسالة",form_send:"إرسال",
 form_select:"اختر موضوعًا...",form_opt_support:"دعم تقني",form_opt_feature:"طلب ميزة",form_opt_billing:"سؤال فواتير",form_opt_other:"أخرى",
 form_success:"تم إرسال الرسالة! سنرد قريبًا.",form_error:"حدث خطأ. حاول مرة أخرى.",
-footer_privacy:"سياسة الخصوصية",footer_terms:"شروط الخدمة"}
+footer_privacy:"سياسة الخصوصية",footer_terms:"شروط الخدمة",footer_refund:"جميع المشتريات الرقمية نهائية وغير قابلة للاسترداد. راجع <a href='terms.html'>شروط الخدمة</a>."}
 };
 
 let currentLang='en';
