@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suno Companion PRO</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 380px;
+      min-height: 420px;
+      max-height: 560px;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-y: auto;
+    }
+
+    .header {
+      padding: 16px 16px 12px;
+      background: linear-gradient(180deg, #141418 0%, #0a0a0a 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #ff00cc, #00f0ff);
+    }
+
+    .header h1 {
+      font-size: 16px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff00cc, #00f0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      font-size: 11px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    #saveBtn {
+      background: linear-gradient(135deg, #ff00cc, #7b2ff7);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(255,0,204,0.3);
+    }
+
+    #saveBtn:hover {
+      box-shadow: 0 4px 24px rgba(255,0,204,0.5);
+      transform: translateY(-1px);
+    }
+
+    #clearBtn {
+      background: rgba(255,59,92,0.1);
+      color: #ff3b5c;
+      border: 1px solid rgba(255,59,92,0.25);
+    }
+
+    #clearBtn:hover {
+      background: rgba(255,59,92,0.2);
+      border-color: #ff3b5c;
+    }
+
+    .vault-section {
+      padding: 0 16px 16px;
+    }
+
+    .vault-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #555;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .vault-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .vault-item {
+      background: #141418;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 10px 12px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .vault-item:hover {
+      border-color: rgba(255,0,204,0.3);
+      background: #1a1a22;
+    }
+
+    .vault-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .vault-item-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e8e8e8;
+    }
+
+    .vault-item-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .vault-mini-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #888;
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+    }
+
+    .vault-mini-btn:hover {
+      color: #fff;
+      border-color: rgba(255,0,204,0.5);
+      background: rgba(255,0,204,0.1);
+    }
+
+    .vault-mini-btn.delete:hover {
+      color: #ff3b5c;
+      border-color: rgba(255,59,92,0.5);
+      background: rgba(255,59,92,0.1);
+    }
+
+    .vault-item-style {
+      font-size: 11px;
+      color: #00f0ff;
+      font-family: "SF Mono", "Fira Code", monospace;
+      margin-bottom: 4px;
+      word-break: break-word;
+    }
+
+    .vault-item-lyrics {
+      font-size: 11px;
+      color: #888;
+      white-space: pre-wrap;
+      max-height: 60px;
+      overflow: hidden;
+      line-height: 1.4;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 32px 16px;
+      color: #444;
+    }
+
+    .empty-state .icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .status-msg {
+      text-align: center;
+      padding: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      animation: fade-in 0.3s ease;
+    }
+
+    .status-success { color: #00e676; }
+    .status-error { color: #ff3b5c; }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Suno Companion PRO</h1>
+    <p>Prompt Vault</p>
+  </div>
+
+  <div class="actions">
+    <button id="saveBtn" class="action-btn">Save Current Prompt</button>
+    <button id="clearBtn" class="action-btn">Clear All</button>
+  </div>
+
+  <div id="statusArea"></div>
+
+  <div class="vault-section">
+    <div class="vault-label">Saved Prompts</div>
+    <div id="vaultList" class="vault-list">
+      <div class="empty-state">
+        <div class="icon">&#128274;</div>
+        <p>Your vault is empty.<br>Open Suno.com and click "Save Current Prompt" to store your style tags and lyrics.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

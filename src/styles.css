@@ -1,0 +1,213 @@
+:root {
+  --scp-bg-dark: #0a0a0a;
+  --scp-bg-surface: #141418;
+  --scp-bg-elevated: #1c1c24;
+  --scp-accent-pink: #ff00cc;
+  --scp-accent-teal: #00f0ff;
+  --scp-accent-gradient: linear-gradient(135deg, #ff00cc, #00f0ff);
+  --scp-text-primary: #e8e8e8;
+  --scp-text-muted: #888;
+  --scp-border: rgba(255, 255, 255, 0.08);
+  --scp-warning: #f5a623;
+  --scp-danger: #ff3b5c;
+  --scp-success: #00e676;
+  --scp-radius: 6px;
+}
+
+.scp-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: var(--scp-bg-elevated);
+  border: 1px solid var(--scp-border);
+  border-radius: var(--scp-radius);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  position: relative;
+  z-index: 9999;
+}
+
+.scp-toolbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--scp-accent-gradient);
+  border-radius: var(--scp-radius) var(--scp-radius) 0 0;
+}
+
+.scp-tag-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.scp-section-label {
+  color: var(--scp-text-muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.scp-tag-btn {
+  background: rgba(255, 0, 204, 0.08);
+  color: var(--scp-accent-pink);
+  border: 1px solid rgba(255, 0, 204, 0.25);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  white-space: nowrap;
+}
+
+.scp-tag-btn:hover {
+  background: rgba(255, 0, 204, 0.2);
+  border-color: var(--scp-accent-pink);
+  box-shadow: 0 0 12px rgba(255, 0, 204, 0.3);
+  transform: translateY(-1px);
+}
+
+.scp-tag-btn:active {
+  transform: translateY(0);
+  background: rgba(255, 0, 204, 0.35);
+}
+
+.scp-tools-section {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.scp-tool-btn {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.scp-sync-btn {
+  background: linear-gradient(135deg, #ff00cc, #7b2ff7);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 0, 204, 0.3);
+}
+
+.scp-sync-btn:hover {
+  box-shadow: 0 4px 20px rgba(255, 0, 204, 0.5);
+  transform: translateY(-1px);
+}
+
+.scp-batch-btn {
+  background: linear-gradient(135deg, #00f0ff, #0080ff);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 240, 255, 0.3);
+}
+
+.scp-batch-btn:hover {
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.scp-tool-btn:active {
+  transform: translateY(0);
+}
+
+.scp-char-counter {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--scp-text-muted);
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  min-width: 80px;
+  text-align: center;
+  margin-left: auto;
+}
+
+.scp-char-counter.scp-warning {
+  color: var(--scp-warning);
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+}
+
+.scp-char-counter.scp-danger {
+  color: var(--scp-danger);
+  background: rgba(255, 59, 92, 0.1);
+  border: 1px solid rgba(255, 59, 92, 0.3);
+  animation: scp-counter-pulse 1s ease-in-out infinite;
+}
+
+@keyframes scp-counter-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.scp-pulse {
+  animation: scp-btn-pulse 0.6s ease-out;
+}
+
+@keyframes scp-btn-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 204, 0.6); }
+  100% { box-shadow: 0 0 0 20px rgba(255, 0, 204, 0); }
+}
+
+.scp-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  border-radius: var(--scp-radius);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: scp-slide-in 0.3s ease-out;
+  max-width: 360px;
+}
+
+.scp-notif-success {
+  background: linear-gradient(135deg, #00c853, #00897b);
+}
+
+.scp-notif-warning {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+.scp-notif-info {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+}
+
+.scp-notif-fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+@keyframes scp-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

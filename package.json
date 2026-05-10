@@ -1,0 +1,18 @@
+{
+  "name": "suno-companion-pro",
+  "version": "1.0.0",
+  "description": "Professional DAW tools for Suno AI",
+  "scripts": {
+    "build:chrome": "mkdir -p dist/chrome/icons && cp src/manifest.json dist/chrome/ && cp src/icons/* dist/chrome/icons/ && cp src/popup.html dist/chrome/ && terser src/content.js -o dist/chrome/content.js -c -m && terser src/background.js -o dist/chrome/background.js -c -m && terser src/popup.js -o dist/chrome/popup.js -c -m && cleancss -o dist/chrome/styles.css src/styles.css",
+    "build:firefox": "mkdir -p dist/firefox/icons && cp src/manifest-firefox.json dist/firefox/manifest.json && cp src/icons/* dist/firefox/icons/ && cp src/popup.html dist/firefox/ && terser src/content.js -o dist/firefox/content.js -c -m && terser src/background.js -o dist/firefox/background.js -c -m && terser src/popup.js -o dist/firefox/popup.js -c -m && cleancss -o dist/firefox/styles.css src/styles.css",
+    "build": "npm run build:chrome && npm run build:firefox",
+    "zip:chrome": "cd dist/chrome && zip -r ../SunoCompanionPro_v1.0_Chrome.zip . *",
+    "zip:firefox": "cd dist/firefox && zip -r ../SunoCompanionPro_v1.0_Firefox.zip . *",
+    "zip": "npm run zip:chrome && npm run zip:firefox",
+    "release": "npm run build && npm run zip"
+  },
+  "devDependencies": {
+    "terser": "^5.31.0",
+    "clean-css-cli": "^5.6.3"
+  }
+}
